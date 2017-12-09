@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  #数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/xbs
+    username: root
+    password: root
+  #redis集群配置
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.71.13:7001
+#        - 192.168.71.13:7002
+#        - 192.168.71.13:7003
+#        - 192.168.71.13:7004
+#        - 192.168.71.13:7005
+#        - 192.168.71.13:7006
+# redis单机版配置
+  redis:
+    hostName: localhost
+    port: 6379
+    password:
+    pool:
+      maxActive: 8
+      maxWait: -1
+      maxIdle: 8
+      minIdle: 0
+    timeout: 0
+
+#Mybatis 日志
+logging:
+  level:
+    com.xuebusi.springboot.maven.mapper: trace
