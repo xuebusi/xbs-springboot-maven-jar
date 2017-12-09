@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping
 public class PersonController {
-	private static final Logger LOGGER = LoggerFactory.getLogger(PersonController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
 	@Autowired
 	PersonService personService;
@@ -67,11 +67,10 @@ public class PersonController {
 
 	/**
 	 * 查询所有
-	 * @param request
 	 * @return
 	 */
 	@GetMapping("/person/list")
-	public ResultModel list(HttpServletRequest request) {
+	public ResultModel list() {
 		List<Person> pList = personService.findAll();
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
@@ -99,7 +98,7 @@ public class PersonController {
 	 * @return
 	 */
 	@PostMapping("/person/update")
-	public ResultModel updateByPrimaryKey(Person person) {
+	public ResultModel update(Person person) {
 		int count = personService.updateByPrimaryKey(person);
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
@@ -109,31 +108,12 @@ public class PersonController {
 
 	/**
 	 * 根据id删除
-	 * 该接口要求参数是Form表单的形式;
-	 * 即Content-Type为application/x-www-form-urlencoded;
-	 * 且请求body中的参数为id=12的形式;
 	 * @param personId
 	 * @return
 	 */
 	@PostMapping("/person/del/{id}")
-	//@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public ResultModel deleteById(@PathVariable("id") Integer personId) {
+	public ResultModel del(@PathVariable("id") Integer personId) {
 		int count = personService.deleteByPrimaryKey(personId);
-		ResultModel<Object> resultModel = new ResultModel<>();
-		resultModel.setCode(200);
-		resultModel.setData(count);
-		return resultModel;
-	}
-
-	/**
-	 * 根据id删除
-	 * 该接口要求参数是json的形式
-	 * @param person
-	 * @return
-	 */
-	@PostMapping("/person/del")
-	public ResultModel deleteById(Person person) {
-		int count = personService.deleteByPrimaryKey(person.getPersonId());
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
 		resultModel.setData(count);
