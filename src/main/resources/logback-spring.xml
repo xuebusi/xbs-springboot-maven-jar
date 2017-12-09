@@ -9,7 +9,7 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
-
+    <!-- #Created by xuebusi.com on 2017/4/13. -->
     <springProfile name="dev">
         <!-- 注意这里一定要放到springProfile里, 否则在你本机执行的时候还是会去找相应的文件 -->
         <appender name="FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">

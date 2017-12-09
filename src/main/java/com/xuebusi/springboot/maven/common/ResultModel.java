@@ -3,7 +3,7 @@ package com.xuebusi.springboot.maven.common;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
- * Created by SYJ on 2017/5/19.
+ * Created by xuebusi.com on 2017/5/19.
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class ResultModel<T> {

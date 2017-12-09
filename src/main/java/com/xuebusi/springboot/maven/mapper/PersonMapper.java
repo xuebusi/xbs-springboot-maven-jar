@@ -7,7 +7,7 @@ import org.apache.ibatis.type.JdbcType;
 import java.util.List;
 
 /**
- * Created by SYJ on 2017/8/16.
+ * Created by xuebusi.com on 2017/8/16.
  */
 @Mapper
 public interface PersonMapper {

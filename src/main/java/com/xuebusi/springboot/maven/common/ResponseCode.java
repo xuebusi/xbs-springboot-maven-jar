@@ -1,7 +1,7 @@
 package com.xuebusi.springboot.maven.common;
 
 /**
- * Created by SYJ on 2017/5/19.
+ * Created by xuebusi.com on 2017/5/19.
  */
 public enum ResponseCode {
 
