@@ -46,7 +46,7 @@ public class PersonController {
 		Person person = personService.selectByPrimaryKey(personId);
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
-		resultModel.setMessage("idea");
+		resultModel.setMessage("idea123");
 		resultModel.setData(person);
 		return resultModel;
 	}
