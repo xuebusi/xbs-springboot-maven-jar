@@ -31,6 +31,7 @@ public class PersonController {
 		long time = System.currentTimeMillis();
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
+		resultModel.setMessage("idea");
 		resultModel.setData(time);
 		return resultModel;
 	}
