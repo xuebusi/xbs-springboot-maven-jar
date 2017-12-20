@@ -62,6 +62,7 @@
 		</dependency>
 
 		<!-- SpringBoot 热部署 -->
+		<!-- devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
