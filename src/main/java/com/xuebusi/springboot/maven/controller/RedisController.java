@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,47 +37,48 @@ public class RedisController {
         List<Person> list = personService.findAll();
         String jsonString = JSON.toJSONString(list);
         try {
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set(key, jsonString);
-            logger.info("==================设置缓存:key={}, value={}", key, jsonString);
+            redisTemplate.opsForValue().set(key, jsonString);
+            logger.info("数据缓存:key={}, value={}", key, jsonString);
         } catch (Exception e) {
-            return "缓存失败";
+            return "数据缓存失败";
         }
-        return jsonString;
+        return "数据缓存成功";
     }
 
     @GetMapping(value = "/get")
     public String get(@RequestParam("key") String key) {
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        String value = ops.get(key);
-        logger.info("==================查询缓存:key={}, value={}", key, value);
-        return StringUtils.isEmpty(value) ? "空" : value;
+        String value = null;
+        try {
+            value = (String) redisTemplate.opsForValue().get(key);
+            logger.info("查询缓存:key={}, value={}", key, value);
+        } catch (Exception e) {
+            return "查询缓存失败";
+        }
+        return value;
 
     }
 
     @GetMapping(value = "/set")
-    public Boolean set(@RequestParam("key") String key, @RequestParam("value") String value) {
+    public String set(@RequestParam("key") String key, @RequestParam("value") String value) {
         try {
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set(key, value);
-            logger.info("==================设置缓存:key={}, value={}", key, value);
+            redisTemplate.opsForValue().set(key, value);
+            logger.info("设置缓存:key={}, value={}", key, value);
         } catch (Exception e) {
-            return false;
+            return "设置缓存失败";
         }
-        return true;
+        return "数据缓存成功";
     }
 
     @GetMapping(value = "/del")
     public String del(@RequestParam("key") String key) {
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        String value = ops.get(key);
         try {
+            String value = (String) redisTemplate.opsForValue().get(key);
             redisTemplate.delete(key);
-            logger.info("==================删除缓存:key={}, value={}", key, value);
+            logger.info("删除缓存:key={}, value={}", key, value);
         } catch (Exception e) {
-            e.printStackTrace();
+            return "删除缓存失败";
         }
-        return StringUtils.isEmpty(value) ? "空" : value;
+        return "删除缓存成功";
 
     }
 }  
