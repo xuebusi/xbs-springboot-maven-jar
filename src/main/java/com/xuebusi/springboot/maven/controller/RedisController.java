@@ -47,7 +47,7 @@ public class RedisController {
 
     @GetMapping(value = "/get")
     public String get(@RequestParam("key") String key) {
-        String value = null;
+        String value;
         try {
             value = (String) redisTemplate.opsForValue().get(key);
             logger.info("查询缓存:key={}, value={}", key, value);
