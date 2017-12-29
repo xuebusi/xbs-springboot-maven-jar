@@ -9,6 +9,7 @@ public class Main {
 
         System.out.println(parseInt(str));
         System.out.println(parseInt2(str));
+        System.out.println(Integer.valueOf(str));
     }
 
     /**
