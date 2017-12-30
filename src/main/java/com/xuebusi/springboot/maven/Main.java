@@ -4,18 +4,19 @@ public class Main {
 
     public static void main(String[] args) {
         //int最大值：2147483647
-        String str = "-" + Integer.MAX_VALUE ;
-//        String str = "-1259";
+//        String str = "" + Integer.MAX_VALUE ;
+//        String str = "" + Integer.MIN_VALUE ;
+        String str = "-2147483648";
 
         System.out.println(parseInt(str));
-        System.out.println(parseInt2(str));
-        System.out.println(Integer.valueOf(str));
+//        System.out.println(parseInt2(str));
+//        System.out.println(Integer.valueOf(str));
     }
 
     /**
      * 自己实现字符串转整数
      * 基本思路：字符串 -> 字符 -> 整数
-     * 3256 = 3*10^3 + 2*10^2 + 5*10^1 + 6*10^0
+     * 整数拆分规律: 3256 = 3*10^3 + 2*10^2 + 5*10^1 + 6*10^0
      * @param s
      * @return
      */
@@ -39,8 +40,14 @@ public class Main {
             if (chars[i] < '0' || chars[i] > '9') throw new NumberFormatException("For input string:\"" + s + "\"");
             // 先根据字符之间进行运算来得到int值，再根据每个数字所在的位数来计算应该乘10的几次幂(Math.pow()函数用于求幂)，最后累加。
             result += (chars[i] - '0') * Math.pow(10, chars.length - i - 1);
+            // 是否超出int的最小值
+            if (negative && -result < Integer.MIN_VALUE) {
+                throw new NumberFormatException("For input string:\"" + s + "\"");
+            }
             // 是否超出int的最大值
-            if (result > Integer.MAX_VALUE) throw new NumberFormatException("For input string:\"" + s + "\"");
+            if (!negative && result > Integer.MAX_VALUE) {
+                throw new NumberFormatException("For input string:\"" + s + "\"");
+            }
         }
         if (negative) result = -result;
         return (int) result;
