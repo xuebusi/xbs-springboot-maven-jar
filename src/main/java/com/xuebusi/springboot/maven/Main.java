@@ -3,14 +3,19 @@ package com.xuebusi.springboot.maven;
 public class Main {
 
     public static void main(String[] args) {
-        //int最大值：2147483647
-//        String str = "" + Integer.MAX_VALUE ;
-//        String str = "" + Integer.MIN_VALUE ;
-        String str = "-2147483648";
-
-        System.out.println(parseInt(str));
-//        System.out.println(parseInt2(str));
-//        System.out.println(Integer.valueOf(str));
+//        String str = null;
+//        String str = "";
+//        String str = " ";
+//        String str = "abc";
+//        String str = "+";
+//        String str = "-";
+//        String str = "0256";
+//        String str = "3256";
+//        String str = "+3256";
+//        String str = "-3256";
+//        String str = "2147483647";
+//        String str = "-2147483649";
+//        System.out.println(parseInt(str));
     }
 
     /**
