@@ -75,10 +75,11 @@ public class RedisController {
         String value = ops.get(key);
         try {
             redisTemplate.delete(key);
+            logger.info("==================删除缓存:key={}, value={}", key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return StringUtils.isEmpty(value) ? "" : value;
+        return StringUtils.isEmpty(value) ? "空" : value;
 
     }
-}  
+}
