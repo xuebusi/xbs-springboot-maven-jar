@@ -39,8 +39,7 @@ public class RedisController {
         List<Person> list = personService.findAll();
         String jsonString = JSON.toJSONString(list);
         try {
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set(key, jsonString);
+            redisTemplate.opsForValue().set(key, jsonString);
         } catch (Exception e) {
             return "缓存失败";
         }
