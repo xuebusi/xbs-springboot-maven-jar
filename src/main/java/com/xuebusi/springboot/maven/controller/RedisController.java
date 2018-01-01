@@ -57,8 +57,7 @@ public class RedisController {
     @GetMapping(value = "/set")
     public Boolean set(@RequestParam("key") String key, @RequestParam("value") String value) {
         try {
-            ValueOperations<String, String> ops = redisTemplate.opsForValue();
-            ops.set(key, value);
+            redisTemplate.opsForValue().set(key, value);
         } catch (Exception e) {
             return false;
         }
