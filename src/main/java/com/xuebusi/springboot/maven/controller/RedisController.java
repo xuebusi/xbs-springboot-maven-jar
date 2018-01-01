@@ -79,6 +79,7 @@ public class RedisController {
             e.printStackTrace();
         }
         return StringUtils.isEmpty(value) ? "" : value;
+}
 
     }
 }
