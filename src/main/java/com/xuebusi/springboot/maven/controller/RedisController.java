@@ -78,7 +78,7 @@ public class RedisController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return StringUtils.isEmpty(value) ? "" : value;
+        return StringUtils.isEmpty(value) ? "本地" : value;
 
     }
 }
