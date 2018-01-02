@@ -41,7 +41,6 @@ public class RedisController {
         try {
             ValueOperations<String, String> ops = redisTemplate.opsForValue();
             ops.set(key, jsonString);
-            logger.info("==================设置缓存:key={}, value={}", key, jsonString);
         } catch (Exception e) {
             return "缓存失败";
         }
