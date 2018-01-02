@@ -43,7 +43,7 @@ public class PersonController {
 	@GetMapping("/person")
 	public ResultModel selectById(@RequestParam("id") Integer personId) throws Exception {
 		Person person = personService.selectByPrimaryKey(personId);
-		ResultModel<Object> resultModel = new ResultModel<>();
+		ResultModel<Person> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
 		resultModel.setData(person);
 		return resultModel;
