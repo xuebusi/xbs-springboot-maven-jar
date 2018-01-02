@@ -73,7 +73,7 @@ public class PersonController {
 		ResultModel<List<Person>> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
 		resultModel.setData(pList);
-		resultModel.setMessage("查询成功");
+		resultModel.setMessage("idea查询成功");
 		return resultModel;
 	}
 
