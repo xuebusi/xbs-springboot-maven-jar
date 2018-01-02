@@ -32,6 +32,7 @@ public class PersonController {
 		ResultModel<Object> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
 		resultModel.setData(time);
+		resultModel.setMessage("成功");
 		return resultModel;
 	}
 
