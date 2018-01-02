@@ -70,7 +70,7 @@ public class PersonController {
 	@GetMapping("/person/list")
 	public ResultModel list() {
 		List<Person> pList = personService.findAll();
-		ResultModel<Object> resultModel = new ResultModel<>();
+		ResultModel<List<Person>> resultModel = new ResultModel<>();
 		resultModel.setCode(200);
 		resultModel.setData(pList);
 		return resultModel;
