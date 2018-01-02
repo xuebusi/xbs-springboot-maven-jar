@@ -67,17 +67,4 @@ public class RedisController {
         }
         return true;
     }
-
-    @GetMapping(value = "/del")
-    public String del(@RequestParam("key") String key) {
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        String value = ops.get(key);
-        try {
-            redisTemplate.delete(key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return StringUtils.isEmpty(value) ? "本地+远程服务器" : value;
-
-    }
 }
