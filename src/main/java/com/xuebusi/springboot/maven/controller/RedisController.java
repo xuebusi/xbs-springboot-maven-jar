@@ -42,7 +42,6 @@ public class RedisController {
             ValueOperations<String, String> ops = redisTemplate.opsForValue();
             ops.set(key, jsonString);
             redisTemplate.opsForValue().set(key, jsonString);
-            logger.info("==================设置缓存:key={}, value={}", key, jsonString);
         } catch (Exception e) {
             return "缓存失败";
         }
@@ -53,7 +52,6 @@ public class RedisController {
     public String get(@RequestParam("key") String key) {
         ValueOperations<String, String> ops = redisTemplate.opsForValue();
         String value = ops.get(key);
-        logger.info("==================查询缓存:key={}, value={}", key, value);
         return StringUtils.isEmpty(value) ? "空" : value;
 
     }
@@ -63,7 +61,6 @@ public class RedisController {
         try {
             ValueOperations<String, String> ops = redisTemplate.opsForValue();
             ops.set(key, value);
-            logger.info("==================设置缓存:key={}, value={}", key, value);
         } catch (Exception e) {
             return false;
         }
@@ -76,7 +73,6 @@ public class RedisController {
         String value = ops.get(key);
         try {
             redisTemplate.delete(key);
-            logger.info("==================删除缓存:key={}, value={}", key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
