@@ -71,7 +71,6 @@ public class RedisController {
         String value = (String) redisTemplate.opsForValue().get(key);
         try {
             redisTemplate.delete(key);
-            logger.info("==================删除缓存:key={}, value={}", key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
