@@ -41,6 +41,7 @@ public class RedisController {
         try {
             ValueOperations<String, String> ops = redisTemplate.opsForValue();
             ops.set(key, jsonString);
+            logger.info("==================设置缓存:key={}, value={}", key, jsonString);
         } catch (Exception e) {
             return "缓存失败";
         }
@@ -66,5 +67,19 @@ public class RedisController {
             return false;
         }
         return true;
+    }
+
+    @GetMapping(value = "/del")
+    public String del(@RequestParam("key") String key) {
+        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+        String value = ops.get(key);
+        try {
+            redisTemplate.delete(key);
+            logger.info("==================删除缓存:key={}, value={}", key, value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return StringUtils.isEmpty(value) ? "空" : value;
+
     }
 }
