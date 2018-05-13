@@ -6,6 +6,7 @@ import com.xuebusi.springboot.maven.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  * 测试类
  * Created by xuebusi.com on 2017/4/13.
  */
-@RestController
+@Controller
 @RequestMapping
 public class PersonController {
 	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
