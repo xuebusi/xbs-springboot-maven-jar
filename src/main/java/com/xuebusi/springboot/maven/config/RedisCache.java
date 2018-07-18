@@ -30,7 +30,7 @@ public class RedisCache implements Cache {
 
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
     private final String id; // cache instance id
-    private RedisTemplate redisTemplate;
+    private static RedisTemplate redisTemplate = RedisCache.getRedisTemplate();
 
     private static final long EXPIRE_TIME_IN_MINUTES = 30; // redis过期时间
 
@@ -55,7 +55,6 @@ public class RedisCache implements Cache {
     @Override
     @SuppressWarnings("unchecked")
     public void putObject(Object key, Object value) {
-        RedisTemplate redisTemplate = getRedisTemplate();
         ValueOperations opsForValue = redisTemplate.opsForValue();
         System.out.println("更新redis缓存:key=" + key + ",value=" + value);
         opsForValue.set(key, value, EXPIRE_TIME_IN_MINUTES, TimeUnit.MINUTES);
@@ -69,7 +68,6 @@ public class RedisCache implements Cache {
      */
     @Override
     public Object getObject(Object key) {
-        RedisTemplate redisTemplate = getRedisTemplate();
         ValueOperations opsForValue = redisTemplate.opsForValue();
         Object value = opsForValue.get(key);
         System.out.println("查询redis缓存:key=" + key + ",value=" + value);
@@ -85,7 +83,6 @@ public class RedisCache implements Cache {
     @Override
     @SuppressWarnings("unchecked")
     public Object removeObject(Object key) {
-        RedisTemplate redisTemplate = getRedisTemplate();
         redisTemplate.delete(key);
         System.out.println("移除redis缓存:key=" + key);
         return null;
@@ -96,7 +93,6 @@ public class RedisCache implements Cache {
      */
     @Override
     public void clear() {
-        RedisTemplate redisTemplate = getRedisTemplate();
         redisTemplate.execute((RedisCallback) connection -> {
             System.out.println("清除redis缓存实例");
             connection.flushDb();
@@ -114,7 +110,7 @@ public class RedisCache implements Cache {
         return readWriteLock;
     }
 
-    private RedisTemplate getRedisTemplate() {
+    private static RedisTemplate getRedisTemplate() {
         if (redisTemplate == null) {
             redisTemplate = ApplicationContextHolder.getBean("redisTemplate");
             System.out.println("==============从Spring容器获取redisTemplate实例:" + redisTemplate);
