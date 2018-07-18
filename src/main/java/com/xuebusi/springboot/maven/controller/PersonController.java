@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping
+@ResponseBody
 public class PersonController {
 	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 

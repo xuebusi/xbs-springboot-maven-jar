@@ -1,5 +1,6 @@
 package com.xuebusi.springboot.maven.mapper;
 
+import com.xuebusi.springboot.maven.config.RedisCache;
 import com.xuebusi.springboot.maven.entity.Person;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by xuebusi.com on 2017/8/16.
  */
 @Mapper
+@CacheNamespace(implementation = com.xuebusi.springboot.maven.config.RedisCache.class)
 public interface PersonMapper {
 
     @Delete({

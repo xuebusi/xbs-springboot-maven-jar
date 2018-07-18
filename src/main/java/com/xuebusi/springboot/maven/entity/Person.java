@@ -1,12 +1,13 @@
 package com.xuebusi.springboot.maven.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 测试
  * Created by xuebusi.com on 2017/8/16.
  */
-public class Person {
+public class Person implements Serializable{
 
     private Integer personId;
     private String personName;
