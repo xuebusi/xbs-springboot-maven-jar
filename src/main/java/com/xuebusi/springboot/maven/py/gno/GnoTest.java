@@ -8,9 +8,7 @@ public class GnoTest {
     public static void main(String[] args) {
         Process proc;
         try {
-            String pypath = "/Users/v_shiyanjun/github/xbs-springboot-maven-jar/py/gno/evaluate_single_submission.py";
-            String[] params = new String[]{"python", pypath};
-            proc = Runtime.getRuntime().exec(params);
+            proc = Runtime.getRuntime().exec("python /Users/v_shiyanjun/github/xbs-springboot-maven-jar/py/gno/evaluate_single_submission.py");
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
