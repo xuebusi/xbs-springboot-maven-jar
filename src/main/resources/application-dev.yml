@@ -5,9 +5,9 @@ server:
 spring:
   #数据源配置
   datasource:
-    url: jdbc:mysql://localhost:3306/xbs
+    url: jdbc:mysql://localhost:3306/xpress
     username: root
-    password: root
+    password: 123456
   #redis集群配置
 #  redis:
 #    cluster:
