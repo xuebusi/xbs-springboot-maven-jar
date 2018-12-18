@@ -78,8 +78,8 @@ def evaluate_single_submission(results_folder, gt_folder, output_path=None, expo
 
 
 if __name__ == '__main__':
-    results_folder = 'data/rf/'
-    gt_folder = 'data/gt/'
+    results_folder = '/Users/v_shiyanjun/github/xbs-springboot-maven-jar/py/gno/data/rf/'
+    gt_folder = '/Users/v_shiyanjun/github/xbs-springboot-maven-jar/py/gno/data/gt/'
 
     evaluate_result = evaluate_single_submission(results_folder, gt_folder)
 
