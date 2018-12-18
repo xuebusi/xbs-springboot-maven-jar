@@ -1,7 +1,7 @@
+import json
 from os import listdir, path
 
 import numpy as np
-import json
 
 from py.gno.evaluation_metrics import evaluation_metrics_for_segmentation, evaluation_metrics_for_classification, \
     evaluation_metrics_for_fovea_location
