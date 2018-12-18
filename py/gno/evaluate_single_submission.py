@@ -9,6 +9,8 @@ from py.gno.evaluation_metrics import evaluation_metrics_for_segmentation, evalu
 
 def evaluate_single_submission(results_folder, gt_folder, output_path=None, export_table=False, is_training=False,
                                team_name=None):
+    import sys
+    print(sys.path)
     inside_results_folder = listdir(results_folder)
     if '__MACOSX' in inside_results_folder:
         inside_results_folder.remove('__MACOSX')
