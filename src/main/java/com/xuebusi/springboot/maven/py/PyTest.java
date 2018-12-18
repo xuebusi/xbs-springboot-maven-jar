@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
  *      export M2_HOME=/Users/v_shiyanjun/soft/apache-maven-3.5.4
  *      export PATH=$PATH:$M2_HOME/bin
  *      export PATH=$PATH:/usr/local/mysql/bin
- *      export PYTHONPATH=$PATH:/Users/v_shiyanjun/baidu/ai/platform-road
+ *      export PYTHONPATH=$PATH:/Users/v_shiyanjun/github/xbs-springboot-maven-jar
  *      export PYTHONPATH
  *      PATH=$PATH:/usr/local/bin/python3.7
  *      export PATH
